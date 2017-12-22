@@ -99,7 +99,9 @@ public class TPCW_execute_search extends HttpServlet {
 
       Vector books = null; //placate javac
       //Display new products
-      if(search_type.equals("Product Name"))
+      if(search_type.equals("author")) // won't be executed.. we deleted author in ..tpcw search servlet
+	  books = TPCW_Database.doAuthorSearch(search_string);
+      else if(search_type.equals("Product Name"))
 	  books = TPCW_Database.doTitleSearch(search_string);
       else if(search_type.equals("Make"))
 	  books = TPCW_Database.doSubjectSearch(search_string);

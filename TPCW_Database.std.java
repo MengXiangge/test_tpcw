@@ -309,6 +309,32 @@ public class TPCW_Database {
 	return vec;	
     }
 
+    public static Vector doAuthorSearch(String search_key) {
+	Vector vec = new Vector();
+	try {
+	    // Prepare SQL
+	    Connection con = getConnection();
+	    PreparedStatement statement = con.prepareStatement
+		(@sql.doAuthorSearch@);
+
+	    // Set parameter
+	    statement.setString(1, search_key+"%");
+	    ResultSet rs = statement.executeQuery();
+
+	    // Results
+	    while(rs.next()) {
+		vec.addElement(new Book(rs));
+	    }
+	    rs.close();
+	    statement.close();
+	    con.commit();
+	    returnConnection(con);
+	} catch (java.lang.Exception ex) {
+	    ex.printStackTrace();
+	}
+	return vec;	
+    }
+
     public static Vector getNewProducts(String subject) {
 	Vector vec = new Vector();  // Vector of Books
 	try {
