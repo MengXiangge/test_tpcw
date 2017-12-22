@@ -93,7 +93,7 @@ public class Book {
 	    i_backing = rs.getString("i_backing");
 	    i_dimensions = rs.getString("i_dimensions");
 	    a_id = i_id;
-	    prime = rs.getString("i_prime");
+	    isprime = rs.getString("isprime");
 	    stock = rs.getString("ii_stock");		
 	} catch (java.lang.Exception ex) {
 	    ex.printStackTrace();
@@ -124,7 +124,7 @@ public class Book {
 
     // From Author
     public int a_id;
-    public String prime;
+    public String isprime;
     public String stock;
 }
 

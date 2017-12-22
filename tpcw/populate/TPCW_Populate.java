@@ -309,7 +309,7 @@ class TPCW_Populate {
 	
 	try {
 	    PreparedStatement statement = con.prepareStatement
-		("INSERT INTO author(a_id,prime,stock,a_mname,a_dob,a_bio) VALUES (?, ?, ?, ?, ?, ?)");
+		("INSERT INTO author(a_id,isprime,stock,a_mname,a_dob,a_bio) VALUES (?, ?, ?, ?, ?, ?)");
 	    for(int i = 1; i <= NUM_AUTHORS; i++){
 		int month, day, year, maxday;
 		A_FNAME = getRandomAString(3,20);
@@ -753,7 +753,7 @@ class TPCW_Populate {
 
 	try {
 	    PreparedStatement statement = con.prepareStatement
-		("CREATE TABLE author ( a_id int not null, prime varchar(20), stock varchar(20), a_mname varchar(20), a_dob date, a_bio @sql.bigCharType@, PRIMARY KEY(a_id))");
+		("CREATE TABLE author ( a_id int not null, isprime varchar(20), stock varchar(20), a_mname varchar(20), a_dob date, a_bio @sql.bigCharType@, PRIMARY KEY(a_id))");
 	    statement.executeUpdate();
 	    con.commit();
 	    System.out.println("Created table AUTHOR");
